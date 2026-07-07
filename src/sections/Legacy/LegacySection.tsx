@@ -5,6 +5,7 @@ import { galleryItems } from "../../data/gallery";
 import { Section, SectionIntro } from "../../components/common/Section";
 import { Reveal } from "../../components/animations/Reveal";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import { ImageWithPlaceholder } from "../../components/common/ImageWithPlaceholder";
 
 export function LegacySection() {
   const [activeProject, setActiveProject] = useState<string | null>(null);
@@ -65,7 +66,7 @@ export function LegacySection() {
                 onClick={() => handleOpenGallery(project.id)}
                 className="relative block w-full p-0 border-none aspect-video overflow-hidden bg-bloom-cream focus:outline-none focus:ring-4 focus:ring-bloom-gold/45"
               >
-                <img
+                <ImageWithPlaceholder
                   src={project.coverImage}
                   alt={project.title}
                   loading="lazy"

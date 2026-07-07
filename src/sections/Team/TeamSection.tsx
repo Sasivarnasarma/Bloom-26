@@ -6,6 +6,8 @@ import { Section, SectionIntro } from "../../components/common/Section";
 import { Reveal } from "../../components/animations/Reveal";
 import { Button } from "../../components/common/Button";
 
+import { ImageWithPlaceholder } from "../../components/common/ImageWithPlaceholder";
+
 export function TeamSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true });
   const [isPaused, setIsPaused] = useState(false);
@@ -48,7 +50,7 @@ export function TeamSection() {
                 className="min-w-0 flex-[0_0_86%] pl-5 sm:flex-[0_0_48%] lg:flex-[0_0_25%]"
               >
                 <article className="team-profile-card group relative h-[420px] overflow-hidden rounded-[1.75rem] text-white transition duration-300 hover:-translate-y-1">
-                  <img
+                  <ImageWithPlaceholder
                     src={member.photo}
                     alt={member.name}
                     loading="lazy"

@@ -34,6 +34,6 @@ export function ScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed inset-x-0 top-0 z-[70] h-1 origin-left bg-bloom-gold" ref={progressRef} />
+    <div className="fixed inset-x-0 top-0 z-70 h-1 origin-left bg-bloom-gold" ref={progressRef} />
   );
 }

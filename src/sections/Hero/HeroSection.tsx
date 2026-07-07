@@ -19,6 +19,40 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,33,31,.88),rgba(25,33,31,.56),rgba(25,33,31,.18))]" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-[linear-gradient(180deg,transparent_0%,rgba(255,246,216,0.56)_48%,#fff6d8_100%)] sm:h-64" />
 
+      {/* Floating Particles */}
+      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+        {Array.from({ length: 128 }).map((_, i) => {
+          const left = `${(i * 9 + 7) % 100}%`;
+          const size = (i % 3) * 2 + 3; // 3px, 5px, or 7px
+          const duration = (i % 4) * 6 + 12; // 12s to 30s
+          const delay = (i % 3) * 2; // 0s, 2s, or 4s
+
+          return (
+            <motion.span
+              key={i}
+              className="absolute rounded-full bg-bloom-gold/30"
+              style={{
+                left,
+                bottom: "-20px",
+                width: size,
+                height: size,
+              }}
+              animate={{
+                y: [-1000, -100],
+                x: [0, i % 2 === 0 ? 30 : -30],
+                opacity: [0, 0.6, 0],
+              }}
+              transition={{
+                duration,
+                repeat: Infinity,
+                delay,
+                ease: "linear",
+              }}
+            />
+          );
+        })}
+      </div>
+
       <div className="relative mx-auto flex min-h-[84svh] max-w-7xl items-end px-6 pb-16 pt-36 sm:px-10 lg:px-16 lg:pb-20">
         <motion.div
           className="max-w-4xl"
