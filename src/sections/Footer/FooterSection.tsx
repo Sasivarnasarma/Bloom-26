@@ -52,16 +52,10 @@ export function FooterSection() {
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1fr_0.8fr]">
         <div>
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-4">
+            <div>
               <img
                 src="/logos/bloom/horizontal/yellow.png"
                 alt="Bloom '26 Logo"
-                className="h-12 w-auto object-contain"
-              />
-              <div className="h-12 w-px bg-white/15" />
-              <img
-                src="/logos/aiesec/powered-by-White-Blue.png"
-                alt="Powered by AIESEC"
                 className="h-12 w-auto object-contain"
               />
             </div>

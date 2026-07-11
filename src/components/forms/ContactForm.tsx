@@ -49,7 +49,10 @@ const fields = [
 ] as const;
 
 export function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  
   const {
     register,
     handleSubmit,
@@ -59,15 +62,39 @@ export function ContactForm() {
     resolver: contactResolver,
   });
 
-  function onSubmit() {
-    setSubmitted(true);
-    reset();
+  async function onSubmit(data: ContactFormValues) {
+    setIsSubmitting(true);
+    setSubmitError(null);
+    setSubmitted(false);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xeebbjgw", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        reset();
+      } else {
+        const errorResult = await response.json();
+        setSubmitError(errorResult.error || "Failed to submit. Please try again.");
+      }
+    } catch (err) {
+      setSubmitError("Failed to submit. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-[2rem] bg-white p-6 shadow-xl sm:p-8"
+      className="rounded-4xl bg-white p-6 shadow-xl sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         {fields.map((field) => (
@@ -106,13 +133,18 @@ export function ContactForm() {
       </label>
 
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        <Button type="submit">
+        <Button type="submit" disabled={isSubmitting}>
           <Send className="size-4" />
-          Send Message
+          {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
         {submitted ? (
           <p className="max-w-md text-sm font-bold leading-6 text-bloom-leaf">
             {contactInfo.successMessage}
+          </p>
+        ) : null}
+        {submitError ? (
+          <p className="max-w-md text-sm font-bold leading-6 text-bloom-clay">
+            {submitError}
           </p>
         ) : null}
       </div>

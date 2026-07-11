@@ -27,7 +27,7 @@ export function Navigation() {
           className="flex items-center rounded-full focus:outline-none focus:ring-4 focus:ring-bloom-gold/40"
         >
           <img
-            src="/logos/bloom/horizontal/yellow.png"
+            src="/logos/bloom/horizontal/black.png"
             alt="Bloom '26"
             className="h-10 w-auto object-contain"
           />
