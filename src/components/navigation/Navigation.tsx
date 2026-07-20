@@ -21,9 +21,12 @@ export function Navigation() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/70 bg-white/76 px-4 py-3 shadow-[0_18px_60px_rgba(25,33,31,0.12)] backdrop-blur-xl">
-        <button
-          type="button"
-          onClick={() => handleNavClick("#home")}
+        <a
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick("#home");
+          }}
           className="flex items-center rounded-full focus:outline-none focus:ring-4 focus:ring-bloom-gold/40"
         >
           <img
@@ -31,14 +34,17 @@ export function Navigation() {
             alt="Bloom '26"
             className="h-10 w-auto object-contain"
           />
-        </button>
+        </a>
 
         <div className="hidden items-center gap-0.5 lg:flex xl:gap-1">
           {navigation.map((item) => (
-            <button
+            <a
               key={item.href}
-              type="button"
-              onClick={() => handleNavClick(item.href)}
+              href={item.href}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(item.href);
+              }}
               className={cn(
                 "relative whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-bold text-bloom-ink/64 transition-colors duration-200 hover:text-bloom-ink xl:px-3",
                 active === item.href && "text-bloom-ink",
@@ -52,7 +58,7 @@ export function Navigation() {
                 />
               ) : null}
               <span className="relative z-10">{item.label}</span>
-            </button>
+            </a>
           ))}
         </div>
 
@@ -83,17 +89,20 @@ export function Navigation() {
         <div className="mx-auto mt-3 max-w-7xl rounded-3xl border border-white/70 bg-white/92 p-4 shadow-xl backdrop-blur-xl lg:hidden">
           <div className="grid gap-2">
             {navigation.map((item) => (
-              <button
+              <a
                 key={item.href}
-                type="button"
-                onClick={() => handleNavClick(item.href)}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.href);
+                }}
                 className={cn(
                   "rounded-2xl px-4 py-3 text-left font-bold text-bloom-ink/70",
                   active === item.href && "bg-bloom-gold/70 text-bloom-ink",
                 )}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </div>
           <AnchorButton

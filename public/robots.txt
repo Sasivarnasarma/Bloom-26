@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bloom26.example.com/sitemap.xml
+Sitemap: https://bloomcn.lk/sitemap.xml

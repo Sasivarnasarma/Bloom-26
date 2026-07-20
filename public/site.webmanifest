@@ -1,9 +1,17 @@
 {
   "name": "Bloom '26",
   "short_name": "Bloom",
-  "description": "Bloom '26 is a CSR initiative by AIESEC in the University of Kelaniya.",
+  "description": "Bloom '26 is a CSR initiative by AIESEC in the University of Kelaniya dedicated to improving healthcare access for underserved rural communities.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fff6d8",
-  "theme_color": "#ffd21f"
+  "theme_color": "#ffd21f",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }

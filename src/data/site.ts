@@ -6,7 +6,7 @@ export const siteInfo = {
   organization: "AIESEC in the University of Kelaniya",
   projectType: "Corporate Social Responsibility",
   theme: "Healthcare, community, and social impact",
-  baseUrl: "https://bloom26.example.com",
+  baseUrl: "https://bloomcn.lk",
 };
 
 export const footer = {

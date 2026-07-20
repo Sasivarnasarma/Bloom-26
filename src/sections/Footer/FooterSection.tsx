@@ -68,14 +68,17 @@ export function FooterSection() {
           <h3 className="font-display text-lg font-black">Quick Links</h3>
           <div className="mt-4 grid grid-cols-2 gap-2">
             {navigation.map((item) => (
-              <button
+              <a
                 key={item.href}
-                type="button"
-                onClick={() => scrollToSection(item.href)}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
                 className="text-left font-bold text-white/66 transition hover:text-bloom-gold"
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </div>
         </div>
