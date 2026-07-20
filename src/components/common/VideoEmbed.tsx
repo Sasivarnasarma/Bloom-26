@@ -154,6 +154,20 @@ export function VideoEmbed({ video }: VideoEmbedProps) {
   };
 
   useEffect(() => {
+    if (isPlaying) {
+      if (controlsTimeoutRef.current) {
+        window.clearTimeout(controlsTimeoutRef.current);
+      }
+      controlsTimeoutRef.current = window.setTimeout(() => {
+        setShowControls(false);
+      }, 2500);
+    } else {
+      setShowControls(true);
+      if (controlsTimeoutRef.current) {
+        window.clearTimeout(controlsTimeoutRef.current);
+      }
+    }
+
     return () => {
       if (controlsTimeoutRef.current) {
         window.clearTimeout(controlsTimeoutRef.current);
